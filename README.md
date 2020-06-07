@@ -4,3 +4,6 @@
 * Node
 * React
 * SQlite
+
+git commit -m "create routes.tsx
+and use in home index the Link react-router-dom tag instead a of html"
