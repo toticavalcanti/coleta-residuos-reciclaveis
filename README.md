@@ -1,5 +1,6 @@
 #  Aplicação web / mobile para ajudar na coleta de resíduos recicláveis
 ##  Stack
+* Typescript
 * Insomnia para teste de requests
 * Node
 * React
