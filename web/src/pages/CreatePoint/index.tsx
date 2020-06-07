@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,11 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import api from '../../services/api';
 
 const CreatePoint = () => {
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
         api.get('items').then(response => {
-            console.log(response);
+            setItems(response.data);
         });
     }, []);
 
@@ -95,30 +97,10 @@ const CreatePoint = () => {
                         <span>Selecione um ou mais itens abaixo.</span>
                     </legend>
                     <ul className="items-grid">
-                        <li>
+                        {items.map(item =>(<li>
                             <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
                             <span>Óleo de Cozinha</span>
-                        </li>
-                        <li className="selected">
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
-                        <li>
-                            <img src="http://localhost:3333/uploads/oleo.svg" alt="Teste" />
-                            <span>Óleo de Cozinha</span>
-                        </li>
+                        </li>))}
                     </ul>
                 </fieldset>
                 <button type="submit">Cadastrar ponto de coleta</button>
